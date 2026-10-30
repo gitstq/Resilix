@@ -1,0 +1,10 @@
+{
+  "name": "healthy",
+  "latency": {
+    "kind": "lognormal",
+    "medianMs": 30,
+    "sigma": 0.4
+  },
+  "errorRate": 0.005,
+  "transientErrorRatio": 1
+}

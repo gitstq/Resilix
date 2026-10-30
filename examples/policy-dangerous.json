@@ -1,0 +1,10 @@
+{
+  "name": "dangerous-example",
+  "retry": {
+    "maxAttempts": 8,
+    "backoff": { "baseMs": 50, "multiplier": 4, "maxMs": 100, "jitter": "none" },
+    "retryBudgetRatio": 0,
+    "retryBudgetWindowMs": 10000,
+    "maxElapsedMs": 0
+  }
+}

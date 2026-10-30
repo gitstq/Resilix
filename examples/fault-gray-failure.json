@@ -1,0 +1,19 @@
+{
+  "name": "gray-failure",
+  "latency": {
+    "kind": "bimodal",
+    "fastMs": 30,
+    "slowMs": 900,
+    "slowRatio": 0.25
+  },
+  "errorRate": 0.03,
+  "transientErrorRatio": 0.7,
+  "bursts": [
+    {
+      "fromMs": 3000,
+      "toMs": 8000,
+      "errorRate": 0.35,
+      "latencyMultiplier": 2
+    }
+  ]
+}

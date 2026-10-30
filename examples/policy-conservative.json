@@ -1,0 +1,36 @@
+{
+  "name": "conservative",
+  "timeoutMs": 800,
+  "limiter": {
+    "algorithm": "token-bucket",
+    "capacity": 400,
+    "refillPerSec": 250
+  },
+  "bulkhead": {
+    "maxConcurrent": 16,
+    "maxQueue": 16,
+    "queueTimeoutMs": 100
+  },
+  "breaker": {
+    "windowMs": 10000,
+    "bucketCount": 10,
+    "minimumCalls": 20,
+    "failureRateThreshold": 0.3,
+    "slowCallRateThreshold": 0.6,
+    "slowCallMs": 400,
+    "openWaitMs": 5000,
+    "halfOpenMaxCalls": 3
+  },
+  "retry": {
+    "maxAttempts": 2,
+    "backoff": {
+      "baseMs": 50,
+      "multiplier": 2,
+      "maxMs": 1000,
+      "jitter": "full"
+    },
+    "retryBudgetRatio": 0.1,
+    "retryBudgetWindowMs": 10000,
+    "maxElapsedMs": 300
+  }
+}

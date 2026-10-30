@@ -1,0 +1,10 @@
+{
+  "name": "flaky",
+  "latency": {
+    "kind": "lognormal",
+    "medianMs": 40,
+    "sigma": 0.8
+  },
+  "errorRate": 0.08,
+  "transientErrorRatio": 0.95
+}

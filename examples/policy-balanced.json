@@ -1,0 +1,36 @@
+{
+  "name": "balanced",
+  "timeoutMs": 1500,
+  "limiter": {
+    "algorithm": "token-bucket",
+    "capacity": 600,
+    "refillPerSec": 400
+  },
+  "bulkhead": {
+    "maxConcurrent": 32,
+    "maxQueue": 64,
+    "queueTimeoutMs": 200
+  },
+  "breaker": {
+    "windowMs": 10000,
+    "bucketCount": 10,
+    "minimumCalls": 20,
+    "failureRateThreshold": 0.5,
+    "slowCallRateThreshold": 0.8,
+    "slowCallMs": 800,
+    "openWaitMs": 5000,
+    "halfOpenMaxCalls": 3
+  },
+  "retry": {
+    "maxAttempts": 3,
+    "backoff": {
+      "baseMs": 50,
+      "multiplier": 2,
+      "maxMs": 2000,
+      "jitter": "equal"
+    },
+    "retryBudgetRatio": 0.2,
+    "retryBudgetWindowMs": 10000,
+    "maxElapsedMs": 600
+  }
+}

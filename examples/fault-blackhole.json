@@ -1,0 +1,18 @@
+{
+  "name": "blackhole",
+  "latency": {
+    "kind": "lognormal",
+    "medianMs": 35,
+    "sigma": 0.5
+  },
+  "errorRate": 0.01,
+  "transientErrorRatio": 1,
+  "blackholeRate": 0.06,
+  "bursts": [
+    {
+      "fromMs": 5000,
+      "toMs": 15000,
+      "errorRate": 0.1
+    }
+  ]
+}

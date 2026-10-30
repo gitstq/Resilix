@@ -1,0 +1,20 @@
+{
+  "name": "overload",
+  "latency": {
+    "kind": "lognormal",
+    "medianMs": 50,
+    "sigma": 0.6
+  },
+  "errorRate": 0.02,
+  "transientErrorRatio": 0.9,
+  "serverConcurrencyLimit": 24,
+  "extraDelayPerInflightMs": 15,
+  "bursts": [
+    {
+      "fromMs": 2000,
+      "toMs": 12000,
+      "errorRate": 0.2,
+      "latencyMultiplier": 3
+    }
+  ]
+}
