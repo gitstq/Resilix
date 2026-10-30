@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  quality:
+    name: typecheck + test (node ${{ matrix.node }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [18, 20, 22]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+      - run: npm ci
+      - name: 类型检查
+        run: npm run typecheck
+      - name: 构建双格式产物
+        run: npm run build
+      - name: 全量测试
+        run: npm test
+      - name: CLI 冒烟
+        run: node dist/cjs/cli/index.js compare -p none,balanced -f flaky --requests 200
+      - name: 内置策略体检（CI 门禁示例）
+        run: node dist/cjs/cli/index.js lint -p balanced --method GET --caller-timeout 2000
