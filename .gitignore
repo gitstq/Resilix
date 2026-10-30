@@ -1,0 +1,16 @@
+node_modules/
+dist/
+.tmp-test/
+*.tsbuildinfo
+.DS_Store
+coverage/
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.env
+.env.local
+.vscode/
+.idea/
+*.tgz
+resilix-report.*
+!examples/**/*.json

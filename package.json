@@ -1,0 +1,69 @@
+{
+  "name": "resilix",
+  "version": "1.0.0",
+  "keywords": [
+    "resilience",
+    "retry",
+    "backoff",
+    "circuit-breaker",
+    "rate-limit",
+    "bulkhead",
+    "timeout",
+    "chaos",
+    "fault-injection",
+    "simulator",
+    "policy",
+    "zero-dependency"
+  ],
+  "description": "Resilix - zero-dependency resilience policy toolkit and offline fault-injection sandbox for TypeScript/Node. Tune retry, backoff, circuit breaker, rate limiter, bulkhead and hedging before you ship them.",
+  "license": "MIT",
+  "author": "gitstq",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gitstq/Resilix.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gitstq/Resilix/issues"
+  },
+  "homepage": "https://github.com/gitstq/Resilix#readme",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/esm/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/esm/index.d.ts",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js",
+      "default": "./dist/cjs/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "resilix": "./dist/cjs/cli/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "README.en.md",
+    "README.zh-TW.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "clean": "node scripts/clean.mjs",
+    "build": "node scripts/build.mjs",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "node scripts/test.mjs",
+    "test:watch": "node scripts/test.mjs --watch",
+    "smoke": "node dist/cjs/cli/index.js sim --policy examples/policy-balanced.json --fault examples/fault-flaky.json --requests 600 --seed 7",
+    "prepublishOnly": "npm run clean && npm run build && npm run test"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "sideEffects": false,
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^22.13.0",
+    "typescript": "^5.7.0"
+  }
+}
